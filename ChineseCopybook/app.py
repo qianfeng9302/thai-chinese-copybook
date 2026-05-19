@@ -18,16 +18,20 @@ from pypinyin import pinyin, Style
 # ---------------------------------------------------------
 # 1. 字体配置与页面基础设置
 # ---------------------------------------------------------
-FONT_DIR = "fonts"
-CHINESE_FONT = os.path.join(FONT_DIR, "chinese.ttf")
-THAI_FONT = os.path.join(FONT_DIR, "thai.ttf")
+# --- 替换后的智能兼容代码 ---
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+FONT_DIR = os.path.join(BASE_DIR, "fonts")
+
+# 自动检测并匹配大小写后缀
+CHINESE_FONT = os.path.join(FONT_DIR, "chinese.ttf") if os.path.exists(os.path.join(FONT_DIR, "chinese.ttf")) else os.path.join(FONT_DIR, "chinese.TTF")
+THAI_FONT = os.path.join(FONT_DIR, "thai.ttf") if os.path.exists(os.path.join(FONT_DIR, "thai.ttf")) else os.path.join(FONT_DIR, "thai.TTF")
 
 # 设置网页标签页和样式
 st.set_page_config(page_title="汉字字帖生成器", page_icon="📝", layout="centered")
 
-# 检查本地是否有字体，线上部署时如果没有字体会抛出友好提示
+# 检查云端服务器上到底有没有这两个文件（不管大小写）
 if not os.path.exists(CHINESE_FONT) or not os.path.exists(THAI_FONT):
-    st.error("⚠️ 未在 'fonts/' 文件夹下找到 chinese.ttf 或 thai.ttf 字体文件，请确保它们已打包上传！")
+    st.error(f"⚠️ 路径读取失败。当前服务器检测路径为: {FONT_DIR}，请检查该文件夹是否在 GitHub 根目录下，且里面直接包含字体文件。")
     st.stop()
 
 # 注册字体
