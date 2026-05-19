@@ -19,8 +19,8 @@ from pypinyin import pinyin, Style
 # 1. 字体配置与页面基础设置
 # ---------------------------------------------------------
 FONT_DIR = "fonts"
-CHINESE_FONT = os.path.join(FONT_DIR, "chinese.TTF")
-THAI_FONT = os.path.join(FONT_DIR, "thai.TTF")
+CHINESE_FONT = os.path.join(FONT_DIR, "chinese.ttf")
+THAI_FONT = os.path.join(FONT_DIR, "thai.ttf")
 
 # 设置网页标签页和样式
 st.set_page_config(page_title="汉字字帖生成器", page_icon="📝", layout="centered")
