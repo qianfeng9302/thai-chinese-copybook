@@ -20,7 +20,7 @@ from pypinyin import pinyin, Style
 # ---------------------------------------------------------
 FONT_DIR = "fonts"
 CHINESE_FONT = os.path.join(FONT_DIR, "chinese.TTF")
-THAI_FONT = os.path.join(FONT_DIR, "thai.ttf")
+THAI_FONT = os.path.join(FONT_DIR, "thai.TTF")
 
 # 设置网页标签页和样式
 st.set_page_config(page_title="汉字字帖生成器", page_icon="📝", layout="centered")
